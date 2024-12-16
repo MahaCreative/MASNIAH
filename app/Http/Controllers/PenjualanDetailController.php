@@ -98,17 +98,25 @@ class PenjualanDetailController extends Controller
     public function store(Request $request)
     {
         $produk = Produk::where('id', $request->produk_id)->first();
+
         if (!$produk) {
             return response()->json('Data gagal disimpan', 400);
         }
+        $getDetail = PenjualanDetail::where('penjualan_id', $request->penjualan_id)->where('produk_id', $request->produk_id)->first();
+        if ($getDetail) {
+            $getDetail->jumlah = $getDetail->jumlah + 1;
+            $getDetail->subtotal = $getDetail->jumlah * $getDetail->harga_jual;
+            $getDetail->save();
+        } else {
+            $detail = new PenjualanDetail();
+            $detail->penjualan_id = $request->penjualan_id;
+            $detail->produk_id = $produk->id;
+            $detail->harga_jual = $produk->harga_jual;
+            $detail->jumlah = 1;
+            $detail->subtotal = $produk->harga_jual;
+            $detail->save();
+        }
 
-        $detail = new PenjualanDetail();
-        $detail->penjualan_id = $request->penjualan_id;
-        $detail->produk_id = $produk->id;
-        $detail->harga_jual = $produk->harga_jual;
-        $detail->jumlah = 1;
-        $detail->subtotal = $produk->harga_jual;
-        $detail->save();
 
         return response()->json('Data berhasil disimpan', 200);
     }

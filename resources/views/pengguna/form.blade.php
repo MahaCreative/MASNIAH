@@ -14,8 +14,8 @@
                     <span class="svg-icon svg-icon-1">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none">
-                            <rect opacity="0.5" x="6" y="17.3137" width="16" height="2"
-                                rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
+                            <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1"
+                                transform="rotate(-45 6 17.3137)" fill="black" />
                             <rect x="7.41422" y="6" width="16" height="2" rx="1"
                                 transform="rotate(45 7.41422 6)" fill="black" />
                         </svg>
@@ -35,14 +35,14 @@
                     <div class="row pb-3">
                         <div class="col">
                             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                <span>Nama Karyawan</span>
+                                <span>Nama Kasir</span>
                             </label>
                             <input type="text" name="name" id="name" class="form-control"
                                 placeholder="Masukkan Nama" required autofocus>
                         </div>
                         <div class="col">
                             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                <span>Email Karyawan</span>
+                                <span>Email Kasir</span>
                             </label>
                             <input type="email" name="email" id="email" class="form-control"
                                 placeholder="Masukkan Email" required>
@@ -65,7 +65,7 @@
                             <select name="role" class="form-control">
                                 <option value="" disabled selected>-- Pilih Posisi -- </option>
                                 <option value="1">Admin</option>
-                                <option value="0">Karyawan</option>
+                                <option value="0">Kasir</option>
                             </select>
                         </div>
                     </div>

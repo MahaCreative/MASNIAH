@@ -20,6 +20,7 @@
                     <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                         <th class="w-10px pe-2 "> No </th>
                         <th class="w-15px">Tanggal</th>
+                        <th class="w-15px">Kode Transaksi</th>
                         <th class="w-15px">Total Item</th>
                         <th class="w-15px">Total Harga</th>
                         <th class="w-15px">Diskon</th>
@@ -57,6 +58,9 @@
                     },
                     {
                         data: 'tanggal'
+                    },
+                    {
+                        data: 'kode_transaksi'
                     },
                     {
                         data: 'total_item'

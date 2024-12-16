@@ -13,6 +13,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PenjualanDetailController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\RekapPenjualanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,6 +75,8 @@ Route::group(
                 Route::get('/laporan/index_produk', [LaporanController::class, 'produk'])->name("laporan.produk");
                 Route::get('/laporan/index_supplier', [LaporanController::class, 'supplier'])->name("laporan.supplier");
                 Route::get('/laporan/index_penjualan', [LaporanController::class, 'penjualan'])->name("laporan.penjualan");
+
+                // Route::get('rekap/penjualan', [RekapPenjualanController::class, 'index'])->name('rekap.index');
             }
         );
 

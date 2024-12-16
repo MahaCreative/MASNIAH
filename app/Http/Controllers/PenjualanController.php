@@ -33,6 +33,9 @@ class PenjualanController extends Controller
             ->addColumn('bayar', function ($penjualan) {
                 return 'Rp. ' . format_uang($penjualan->bayar);
             })
+            ->addColumn('kode_transaksi', function ($penjualan) {
+                return $penjualan->trx_penjualan;
+            })
             ->addColumn('tanggal', function ($penjualan) {
                 return tanggal_indonesia($penjualan->created_at, false);
             })
@@ -65,6 +68,7 @@ class PenjualanController extends Controller
     public function create()
     {
         $penjualan = new Penjualan();
+        $penjualan->trx_penjualan = date('dmy') . Penjualan::count() + 1;
         $penjualan->total_item = 0;
         $penjualan->total_harga = 0;
         $penjualan->diskon = 0;
@@ -82,6 +86,7 @@ class PenjualanController extends Controller
      */
     public function store(Request $request)
     {
+
         $penjualan = Penjualan::findOrFail($request->penjualan_id);
         $penjualan->total_item = $request->total_item;
         $penjualan->total_harga = $request->total;

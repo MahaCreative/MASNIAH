@@ -12,9 +12,9 @@
                     {{-- @method('PUT') --}}
                     <div class="row mb-3">
                         {{-- <div class="col-sm-3">
-                        <label for="" class="form-label">Kode Produk</label>
-                        <input type="text" class="form-control">
-                    </div> --}}
+                            <label for="" class="form-label">Kode Produk</label>
+                            <input type="text" class="form-control">
+                        </div> --}}
                         <div class="col-sm-3">
                             <label for="" class="form-label">Nama Produk</label>
                             <input type="text" class="form-control" name="nama_produk">

@@ -105,7 +105,7 @@
                             </div>
                             <div class="menu-item">
                                 <a class="menu-link {{ 'produk' == request()->path() ? 'active' : '' }}"
-                                    href="produk">
+                                    href="/produk">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
