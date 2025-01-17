@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('kode_produk');
             $table->string('nama_produk');
             $table->string('merk');
-            $table->double('berat');
+            $table->string('berat');
             $table->unsignedBigInteger('kategori_id')->nullable();
             $table->string('image')->nullable();
             $table->integer("harga_jual");

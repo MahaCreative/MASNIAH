@@ -33,7 +33,7 @@ class PenggunaController extends Controller
             })
             ->addColumn('role', function ($user) {
                 return ' <span class="badge badge-lg ' . ($user->role ? 'badge-light-danger' : 'badge-light-primary') . '">
-        ' . ($user->role ? 'Admin' : 'Karyawan') . ' </span> ';
+        ' . ($user->role ? 'Admin' : 'Kasir') . ' </span> ';
             })
             ->addColumn('aksi', function ($user) {
                 return '
