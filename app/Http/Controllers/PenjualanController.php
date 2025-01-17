@@ -14,6 +14,10 @@ class PenjualanController extends Controller
      */
     public function index()
     {
+        $penjualan = Penjualan::where('total_harga', '=', 0)->get();
+        foreach ($penjualan  as $item) {
+            $item->delete();
+        }
         return view('penjualan.index');
     }
 
