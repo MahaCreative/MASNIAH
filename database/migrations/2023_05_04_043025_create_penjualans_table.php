@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('diterima')->default(0);
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->string('status')->default('belum selesai');
             $table->timestamps();
         });
     }

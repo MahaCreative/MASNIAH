@@ -14,16 +14,13 @@ class PenjualanController extends Controller
      */
     public function index()
     {
-        $penjualan = Penjualan::where('total_harga', '=', 0)->get();
-        foreach ($penjualan  as $item) {
-            $item->delete();
-        }
+
         return view('penjualan.index');
     }
 
     public function data()
     {
-        $penjualan = Penjualan::orderBy('id', 'desc')->get();
+        $penjualan = Penjualan::where("status", 'selesai')->orderBy('id', 'desc')->get();
 
         return datatables()
             ->of($penjualan)
@@ -97,6 +94,7 @@ class PenjualanController extends Controller
         $penjualan->diskon = $request->diskon;
         $penjualan->bayar = $request->bayar;
         $penjualan->diterima = $request->diterima;
+        $penjualan->status = "selesai";
         $penjualan->update();
 
         $detail = PenjualanDetail::where('penjualan_id', $penjualan->id)->get();
