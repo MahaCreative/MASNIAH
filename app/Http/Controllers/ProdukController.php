@@ -35,7 +35,7 @@ class ProdukController extends Controller
             })
             ->addColumn('nama_produk', function ($produk) {
                 return  ' <div class="d-flex"> <div class="symbol symbol-45px me-5 ml-1">
-                                    <img src=" ' . Storage::url($produk->image) . '" alt="" />
+                                    <img src="storage/' . $produk->image . '" alt="" />
                                 </div> <div class="ms-2">' . $produk->nama_produk . '<div class="text-muted fs-7 fw-bolder">' . $produk->merk . '</div></div></div>';
             })
             ->addColumn('harga_jual', function ($produk) {
@@ -160,7 +160,7 @@ class ProdukController extends Controller
 
             $fotoLocation = "uploads/produk/$produk->id/foto";
 
-            $fotoPath = $request->file('image')->storeAs($fotoLocation, $fotoFilename, 'public');
+            $fotoPath = $request->file('image')->storeAs($fotoLocation, $fotoFilename);
 
             $produk->image = $fotoPath;
         }

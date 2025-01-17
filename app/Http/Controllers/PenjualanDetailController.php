@@ -53,7 +53,7 @@ class PenjualanDetailController extends Controller
             $row = array();
             $stok = $item->produk->stok;
             $row['nama_produk'] = '<div class="d-flex align-items-center">
-                                    <img src=" ' . Storage::url($item->produk->image) . '"  class="w-50px h-50px rounded-3 me-3" alt="" />
+                                    <img src="storage/' . $item->produk->image . '"  class="w-50px h-50px rounded-3 me-3" alt="" />
                                     <span class="fw-bold text-gray-800 cursor-pointer text-hover-primary fs-6 me-1">' . $item->produk['nama_produk'] . '</span>';
             $row['jumlah']      = '<div class="col-xs-2"> <input type="number" max="' . $stok . '" class="form-control input-sm quantity" data-id="' . $item->id . '" value="' . $item->jumlah . '"></div>';
             $row['subtotal']    = '<span class="fw-bold text-primary fs-3" >Rp. ' . format_uang($item->subtotal) . '</span>';
@@ -97,24 +97,37 @@ class PenjualanDetailController extends Controller
      */
     public function store(Request $request)
     {
+
         $produk = Produk::where('id', $request->produk_id)->first();
+        if ($produk->stok < 1) {
+            return response()->json('Stok produk tidak mencukupi', 400);
+        }
 
         if (!$produk) {
             return response()->json('Data gagal disimpan', 400);
         }
         $getDetail = PenjualanDetail::where('penjualan_id', $request->penjualan_id)->where('produk_id', $request->produk_id)->first();
+
         if ($getDetail) {
-            $getDetail->jumlah = $getDetail->jumlah + 1;
-            $getDetail->subtotal = $getDetail->jumlah * $getDetail->harga_jual;
-            $getDetail->save();
+            if ($produk->stok < $getDetail->jumlah + 1) {
+                return response()->json('Stok produk tidak mencukupi', 400);
+            } else {
+                $getDetail->jumlah = $getDetail->jumlah + 1;
+                $getDetail->subtotal = $getDetail->jumlah * $getDetail->harga_jual;
+                $getDetail->save();
+            }
         } else {
-            $detail = new PenjualanDetail();
-            $detail->penjualan_id = $request->penjualan_id;
-            $detail->produk_id = $produk->id;
-            $detail->harga_jual = $produk->harga_jual;
-            $detail->jumlah = 1;
-            $detail->subtotal = $produk->harga_jual;
-            $detail->save();
+            if ($produk->stok <  1) {
+                return response()->json('Stok produk tidak mencukupi', 400);
+            } else {
+                $detail = new PenjualanDetail();
+                $detail->penjualan_id = $request->penjualan_id;
+                $detail->produk_id = $produk->id;
+                $detail->harga_jual = $produk->harga_jual;
+                $detail->jumlah = 1;
+                $detail->subtotal = $produk->harga_jual;
+                $detail->save();
+            }
         }
 
 

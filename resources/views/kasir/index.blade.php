@@ -354,7 +354,9 @@
                     table.ajax.reload(() => loadForm($('#diskon').val()));
                 })
                 .fail(errors => {
-                    alert('Tidak dapat menyimpan data');
+                    console.log();
+
+                    alert(errors.responseJSON);
                     return;
                 });
 

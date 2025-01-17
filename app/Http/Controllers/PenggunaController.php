@@ -94,7 +94,7 @@ class PenggunaController extends Controller
 
             $fotoLocation = "uploads/pengguna/$pengguna->id/foto";
 
-            $fotoPath = $request->file('image')->storeAs($fotoLocation, $fotoFilename, 'public');
+            $fotoPath = $request->file('image')->storeAs($fotoLocation, $fotoFilename);
 
             $pengguna->image = $fotoPath;
 
