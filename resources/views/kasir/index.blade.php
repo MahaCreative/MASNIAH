@@ -76,7 +76,7 @@
                                                 <!--begin::Body-->
                                                 <div class="card-body text-center">
                                                     <!--begin::Food img-->
-                                                    <img src="{{ Storage::url("$value->image") }}"
+                                                    <img src="storage/{{ $value->image }}"
                                                         class="rounded-3 mb-4 w-150px h-150px w-xxl-200px h-xxl-200px"
                                                         alt="" />
                                                     <!--end::Food img-->
